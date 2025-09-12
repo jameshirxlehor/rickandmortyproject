@@ -61,7 +61,21 @@ class _CharacterListPageState extends State<CharacterListPage> {
               child: ListTile(
                 leading: CircleAvatar(backgroundImage: NetworkImage(character.image)),
                 title: Text(character.name),
-                subtitle: Text(character.status),
+                subtitle: Row(
+                  children: [
+                    Icon(
+                      Icons.circle,
+                      size: 12,
+                      color: character.status.toLowerCase() == "alive"
+                          ? Colors.green
+                          : character.status.toLowerCase() == "dead"
+                          ? Colors.red
+                          : Colors.grey,
+                    ),
+                    const SizedBox(width: 6),
+                    Text(character.status),
+                  ],
+                ),
                 onTap: () {
                   Navigator.push(
                     context,
