@@ -28,7 +28,7 @@ Desenvolvido como desafio técnico, aplicando princípios de **Clean Architectur
 ## 📂 Estrutura do Projeto (Clean Architecture Simplificada)
 ```bash
 lib/
-├── core/                
+├── features/                
 │   └── characters/
 │       ├── domain/      
 │       ├── data/        
