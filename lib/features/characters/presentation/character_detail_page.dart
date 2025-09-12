@@ -17,11 +17,11 @@ class CharacterDetailPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: const EdgeInsets.all(16),
+              margin: const EdgeInsets.symmetric(vertical: 4,horizontal: 16),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: const Color(0xFF2C2C2C),
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.5),
@@ -89,7 +89,7 @@ class CharacterDetailPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -98,10 +98,16 @@ class CharacterDetailPage extends StatelessWidget {
                       onPressed: (){
                         Navigator.pop(context);
                       },
-                      child: const Text('VOLTAR'),
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStatePropertyAll<Color>(Color(0xFF2C2C2C)),
+                      style: FilledButton.styleFrom(
+                        backgroundColor: const Color(0xFF2C2C2C),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        shadowColor: Colors.black.withOpacity(0.5),
+                        elevation: 10,
                       ),
+                      child: const Text('VOLTAR'),
                     ),
                   ),
                 ],
