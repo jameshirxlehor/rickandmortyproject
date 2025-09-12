@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:rickandmortyproject/features/characters/presentation/character_list_page.dart';
-
 import 'features/characters/data/character_service.dart';
 
 void main() {
@@ -23,9 +22,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
       home: CharacterListPage(),
     );
   }

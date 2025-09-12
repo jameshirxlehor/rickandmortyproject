@@ -49,7 +49,8 @@ class _CharacterListPageState extends State<CharacterListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Personagens")),
+      appBar: AppBar(title: const Text("Lista de Personagens",style: TextStyle(color: Colors.white),),backgroundColor: Colors.black,),
+      backgroundColor: const Color(0xFF1C1C1C),
       body: ListView.builder(
         controller: _scrollController,
         itemCount: characters.length + 1,
@@ -58,9 +59,10 @@ class _CharacterListPageState extends State<CharacterListPage> {
             final character = characters[index];
             return Card(
               margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+              color: const Color(0xFF2C2C2C),
               child: ListTile(
                 leading: CircleAvatar(backgroundImage: NetworkImage(character.image)),
-                title: Text(character.name),
+                title: Text(character.name,style: TextStyle(color: Colors.white),),
                 subtitle: Row(
                   children: [
                     Icon(
@@ -73,7 +75,7 @@ class _CharacterListPageState extends State<CharacterListPage> {
                           : Colors.grey,
                     ),
                     const SizedBox(width: 6),
-                    Text(character.status),
+                    Text(character.status,style: TextStyle(color: Colors.white),),
                   ],
                 ),
                 onTap: () {
