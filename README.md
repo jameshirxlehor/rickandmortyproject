@@ -1,16 +1,65 @@
-# rickandmortyproject
+# 🛸 Rick and Morty Flutter App
 
-Listagem de personagens da Série Rick and Morty e exibição de detalhes do personagem selecionado.
+Um aplicativo Flutter simples que consome a [Rick and Morty API](https://rickandmortyapi.com/) e exibe informações sobre personagens da série.  
+Desenvolvido como desafio técnico, aplicando princípios de **Clean Architecture** e **Clean Code** para garantir organização, manutenibilidade e escalabilidade.
 
-## Getting Started
+---
+## 🛠️ Tecnologias Utilizadas
+- [Flutter](https://flutter.dev/) (última versão estável)
+- [Dart](https://dart.dev/)
+- Gerenciamento de estado simples (`SetState`)
+- [Package Dio](https://pub.dev/packages/dio) para consumo da API
 
-This project is a starting point for a Flutter application.
+---
+## 🚀 Funcionalidades
+- Lista de personagens com **imagem, nome e status**.
+- Paginação para carregar os personagens aos poucos.
+- Tela de detalhes com:
+    - Nome
+    - Imagem
+    - Status (vivo, morto ou desconhecido)
+    - Espécie
+    - Origem
+    - ID
+- Navegação entre páginas.
+- UI simples, mas organizada, com cards estilizados.
 
-A few resources to get you started if this is your first Flutter project:
+---
+## 📂 Estrutura do Projeto (Clean Architecture Simplificada)
+```bash
+lib/
+├── core/                
+│   └── characters/
+│       ├── domain/      
+│       ├── data/        
+│       └── presentation/
+└── main.dart            
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
+## 🌌 Gerenciamento de Estado
+Optei por utilizar `setState` para o gerenciamento de estado.  
+Como o desafio limita o app a no máximo 3 páginas e a complexidade é baixa, o `setState` foi suficiente para:
+- Atualizar a lista de personagens com paginação.
+- Controlar estados de loading e "carregar mais".
+- Atualizar a UI ao navegar para os detalhes.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Essa decisão evita a adição de dependências desnecessárias e mantém o código simples e acessível para qualquer desenvolvedor rodar e entender. Caso o app cresça em funcionalidades, o próximo passo natural seria migrar para uma dependência.
+
+---
+## ▶️ Como Executar o App Localmente
+- #### Pré-requisitos
+    - Flutter SDK (última versão estável)
+    - Editor de código (ex: VS Code ou Android Studio)
+    - Emulador Android/iOS ou dispositivo físico conectado
+
+- #### Passos
+    - 1º Execute o comando `git clone` no [Repositório do Projeto](https://github.com/jameshirxlehor/rickandmortyproject.git)
+    - 2º Entre na pasta do projeto: `cd rickandmortyproject`
+    - 3º Instale as dependências: `flutter pub get`
+    - 4º Execute no emulador ou dispositivo físico: `flutter run`
+
+---
+## 👨‍💻 Autor
+- #### James Hirxlehor
+- [LinkedIn](https://www.linkedin.com/in/jameshirxlehor) | [GitHub](https://github.com/jameshirxlehor)
