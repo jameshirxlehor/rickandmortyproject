@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:rickandmortyproject/features/characters/presentation/character_list_page.dart';
 import 'features/characters/data/character_service.dart';
 import 'package:rickandmortyproject/features/characters/presentation/home_animation_page.dart';
 
