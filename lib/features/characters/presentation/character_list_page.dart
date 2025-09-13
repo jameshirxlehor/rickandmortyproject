@@ -51,54 +51,65 @@ class _CharacterListPageState extends State<CharacterListPage> {
     return Scaffold(
       appBar: AppBar(title: const Text("Lista de Personagens",style: TextStyle(color: Colors.white),),backgroundColor: Colors.black,),
       backgroundColor: const Color(0xFF1C1C1C),
-      body: ListView.builder(
-        controller: _scrollController,
-        itemCount: characters.length + 1,
-        itemBuilder: (context, index) {
-          if (index < characters.length) {
-            final character = characters[index];
-            return Card(
-              margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-              color: const Color(0xFF2C2C2C),
-              child: ListTile(
-                leading: CircleAvatar(backgroundImage: NetworkImage(character.image)),
-                title: Text(character.name,style: TextStyle(color: Colors.white),),
-                subtitle: Row(
-                  children: [
-                    Icon(
-                      Icons.circle,
-                      size: 12,
-                      color: character.status.toLowerCase() == "alive"
-                          ? Colors.green
-                          : character.status.toLowerCase() == "dead"
-                          ? Colors.red
-                          : Colors.grey,
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Image.asset(
+              "assets/images/cover.jpg",
+              fit: BoxFit.cover,
+              opacity: const AlwaysStoppedAnimation(0.2),
+            ),
+          ),
+          ListView.builder(
+            controller: _scrollController,
+            itemCount: characters.length + 1,
+            itemBuilder: (context, index) {
+              if (index < characters.length) {
+                final character = characters[index];
+                return Card(
+                  margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+                  color: const Color(0xFF2C2C2C),
+                  child: ListTile(
+                    leading: CircleAvatar(backgroundImage: NetworkImage(character.image)),
+                    title: Text(character.name,style: TextStyle(color: Colors.white),),
+                    subtitle: Row(
+                      children: [
+                        Icon(
+                          Icons.circle,
+                          size: 12,
+                          color: character.status.toLowerCase() == "alive"
+                              ? Colors.green
+                              : character.status.toLowerCase() == "dead"
+                              ? Colors.red
+                              : Colors.grey,
+                        ),
+                        const SizedBox(width: 6),
+                        Text(character.status,style: TextStyle(color: Colors.white),),
+                      ],
                     ),
-                    const SizedBox(width: 6),
-                    Text(character.status,style: TextStyle(color: Colors.white),),
-                  ],
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => CharacterDetailPage(character: character),
-                    ),
-                  );
-                },
-              ),
-            );
-          } else {
-            return Padding(
-              padding: const EdgeInsets.all(16),
-              child: Center(
-                child: hasMore
-                    ? const CircularProgressIndicator()
-                    : const Text("Todos os personagens carregados"),
-              ),
-            );
-          }
-        },
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => CharacterDetailPage(character: character),
+                        ),
+                      );
+                    },
+                  ),
+                );
+              } else {
+                return Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Center(
+                    child: hasMore
+                        ? const CircularProgressIndicator()
+                        : const Text("Todos os personagens carregados"),
+                  ),
+                );
+              }
+            },
+          ),
+        ],
       ),
     );
   }
