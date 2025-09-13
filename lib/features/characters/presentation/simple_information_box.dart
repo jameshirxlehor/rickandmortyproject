@@ -3,26 +3,35 @@ import 'package:flutter/material.dart';
 class simpleInformationBox extends StatelessWidget {
   final String title;
   final String value;
+  final Color colorThemeInfo;
 
-  const simpleInformationBox({required this.title, required this.value});
+  const simpleInformationBox({required this.title, required this.value, required this.colorThemeInfo});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: value.length < 10 ? 120 : null,
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: const Color(0xFF3A3A3A),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.white24, width: 1),
+        border: Border.all(color: colorThemeInfo, width: 1),
       ),
       child: Column(
         children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 14,
-              color: Colors.white70,
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(6),
+              color: colorThemeInfo,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 0),
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.black87,
+                ),
+              ),
             ),
           ),
           const SizedBox(height: 6),

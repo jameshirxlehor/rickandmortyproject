@@ -30,12 +30,14 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // Card de informações
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 4,horizontal: 16),
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: const Color(0xFF2C2C2C),
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),
+                    border: Border.all(color: Colors.lime),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.5),
@@ -47,7 +49,30 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // imagem do personagem
+                      // ID personagem
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Colors.limeAccent,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 0),
+                              child: Text(
+                                "#${widget.character.id}",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black87,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      // Imagem personagem
                       ClipRRect(
                         borderRadius: BorderRadius.circular(100),
                         child: Image.network(
@@ -57,7 +82,7 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 6),
                       // nome estilizado
                       Text(
                         widget.character.name,
@@ -67,41 +92,62 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
                           color: Colors.white,
                         ),
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 6),
                       // status
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.circle,
-                            size: 12,
-                            color: widget.character.status.toLowerCase() == "alive"
-                                ? Colors.green
-                                : widget.character.status.toLowerCase() == "dead"
-                                ? Colors.red
-                                : Colors.grey,
-                          ),
+                          // Icon(
+                          //   Icons.circle,
+                          //   size: 12,
+                          //   color: widget.character.status.toLowerCase() == "alive"
+                          //       ? Colors.lightGreen
+                          //       : widget.character.status.toLowerCase() == "dead"
+                          //       ? Colors.redAccent
+                          //       : Colors.grey,
+                          // ),
                           const SizedBox(width: 6),
-                          Text(
-                            widget.character.status,
-                            style: const TextStyle(color: Colors.white70),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: widget.character.status.toLowerCase() == "alive"
+                                  ? Colors.lightGreen
+                                  : widget.character.status.toLowerCase() == "dead"
+                                  ? Colors.redAccent
+                                  : Colors.grey,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
+                              child: Text(
+                                widget.character.status,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black87,
+                                ),
+                              ),
+                            ),
                           ),
+                          // Text(
+                          //   widget.character.status,
+                          //   style: const TextStyle(color: Colors.white70),
+                          // ),
                         ],
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 20),
                       // informações extras
-                      Row(
+                      Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          simpleInformationBox(title: "Specie", value: widget.character.species),
-                          simpleInformationBox(title: "ID", value: "#${widget.character.id}"),
+                          simpleInformationBox(title: "Specie", value: widget.character.species,colorThemeInfo: Colors.deepPurpleAccent,),
+                          const SizedBox(height: 6),
+                          simpleInformationBox(title: "Origin", value: widget.character.origin,colorThemeInfo: Colors.tealAccent,)
                         ],
                       ),
-                      const SizedBox(height: 16),
-                      simpleInformationBox(title: "Origin", value: "${widget.character.origin}")
                     ],
                   ),
                 ),
+                // Botão para voltar a página
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Row(
@@ -113,15 +159,16 @@ class _CharacterDetailPageState extends State<CharacterDetailPage> {
                             Navigator.pop(context);
                           },
                           style: FilledButton.styleFrom(
-                            backgroundColor: const Color(0xFF2C2C2C),
+                            backgroundColor: Colors.limeAccent,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20),bottomRight: Radius.circular(20)),
+                              side: BorderSide(color: Colors.lime)
                             ),
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             shadowColor: Colors.black.withOpacity(0.5),
                             elevation: 10,
                           ),
-                          child: const Text('VOLTAR'),
+                          child: const Text('VOLTAR',style: TextStyle(color: Colors.black87),),
                         ),
                       ),
                     ],

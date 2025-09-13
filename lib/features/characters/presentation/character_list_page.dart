@@ -37,13 +37,24 @@ class _CharacterListPageState extends State<CharacterListPage> {
 
   Future<void> _fetchCharacters() async {
     setState(() => isLoading = true);
-    final newCharacters = await service.getCharacters(page: currentPage);
-    setState(() {
-      characters.addAll(newCharacters);
-      currentPage++;
-      isLoading = false;
-      if (newCharacters.isEmpty) hasMoreCharacters = false;
-    });
+    try {
+      final newCharacters = await service.getCharacters(page: currentPage);
+      ScaffoldMessenger.of(context).clearSnackBars();
+      setState(() {
+        characters.addAll(newCharacters);
+        currentPage++;
+        if (newCharacters.isEmpty) hasMoreCharacters = false;
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Sem conexão com a internet. Verifique sua rede."),
+          backgroundColor: Colors.deepPurpleAccent,
+        ),
+      );
+    } finally {
+      setState(() => isLoading = false);
+    }
   }
 
   @override
@@ -53,7 +64,7 @@ class _CharacterListPageState extends State<CharacterListPage> {
         title: const Text(
           "PERSONAGENS",
           style: TextStyle(
-              color: Colors.white,
+              color: Colors.limeAccent,
           ),
         ),
         backgroundColor: Colors.black,
@@ -78,6 +89,13 @@ class _CharacterListPageState extends State<CharacterListPage> {
                 return Card(
                   margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
                   color: const Color(0xFF2C2C2C),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16), // cantos arredondados
+                    side: const BorderSide(
+                      color: Colors.lime, // cor da borda
+                      width: 1,            // espessura
+                    ),
+                  ),
                   child: ListTile(
                     leading: CircleAvatar(backgroundImage: NetworkImage(character.image)),
                     title: Text(character.name,style: TextStyle(color: Colors.white),),
