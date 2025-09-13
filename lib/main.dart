@@ -16,8 +16,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final dio = Dio();
-  CharacterService get service => CharacterService(dio);
 
   @override
   Widget build(BuildContext context) {

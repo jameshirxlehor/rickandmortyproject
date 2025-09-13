@@ -47,7 +47,7 @@ class _CharacterListPageState extends State<CharacterListPage> {
       });
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+         SnackBar(
           content: Text("Sem conexão com a internet. Verifique sua rede."),
           backgroundColor: Colors.deepPurpleAccent,
         ),

@@ -48,16 +48,36 @@ Essa decisão evita a adição de dependências desnecessárias e mantém o cód
 
 ---
 ## ▶️ Como Executar o App Localmente
+![](https://img.icons8.com/?size=100&id=17836&format=png&color=000000)
 - #### Pré-requisitos
-    - Flutter SDK (última versão estável)
-    - Editor de código (ex: VS Code ou Android Studio)
-    - Emulador Android/iOS ou dispositivo físico conectado
+  - Flutter SDK (última versão estável)
+  - Editor de código (ex: VS Code ou Android Studio)
+  - Emulador Android/iOS ou dispositivo físico conectado
 
 - #### Passos
-    - 1º Execute o comando `git clone` no [Repositório do Projeto](https://github.com/jameshirxlehor/rickandmortyproject.git)
-    - 2º Entre na pasta do projeto: `cd rickandmortyproject`
-    - 3º Instale as dependências: `flutter pub get`
-    - 4º Execute no emulador ou dispositivo físico: `flutter run`
+  - 1º Execute o comando `git clone` no [Repositório do Projeto](https://github.com/jameshirxlehor/rickandmortyproject.git)
+  - 2º Entre na pasta do projeto: `cd rickandmortyproject`
+  - 3º Instale as dependências: `flutter pub get`
+  - 4º Execute no emulador ou dispositivo físico: `flutter run`
+#
+![](https://img.icons8.com/?size=100&id=85906&format=png&color=000000)
+- #### Pré-requisitos
+  - Flutter SDK (última versão estável)
+  - Editor de código (ex: VS Code ou Android Studio)
+  - Xcode instalado (somente em macOS)
+  - Emulador iOS ou dispositivo físico conectado
+
+- #### Passos
+  - 1º Execute o comando `git clone` no [Repositório do Projeto](https://github.com/jameshirxlehor/rickandmortyproject.git)
+  - 2º Entre na pasta do projeto: `cd rickandmortyproject`
+  - 3º Instale as dependências: `flutter pub get`
+  - 4º Configure os pods do iOS.
+  - 5º Execute no emulador ou dispositivo físico: `flutter run`
+
+---
+## 📱 Demonstraçãor
+- [▶️ Clique aqui para assistir ao vídeo](https://youtube.com/shorts/u1WTMsoAbuc)
+- [📦 Baixar APK Release (Android)](https://drive.google.com/file/d/1YVh59Fi9HgR9WJylNWD0eUajWtKI-PSg/view?usp=sharing)
 
 ---
 ## 👨‍💻 Autor
