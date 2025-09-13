@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:rickandmortyproject/features/characters/domain/character.dart';
-import 'infoBox.dart';
+import 'simple_information_box.dart';
 
-class CharacterDetailPage extends StatelessWidget {
+class CharacterDetailPage extends StatefulWidget {
   final Character character;
 
   const CharacterDetailPage({super.key, required this.character});
 
+  @override
+  State<CharacterDetailPage> createState() => _CharacterDetailPageState();
+}
+
+class _CharacterDetailPageState extends State<CharacterDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +51,7 @@ class CharacterDetailPage extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(100),
                         child: Image.network(
-                          character.image,
+                          widget.character.image,
                           height: 150,
                           width: 150,
                           fit: BoxFit.cover,
@@ -55,7 +60,7 @@ class CharacterDetailPage extends StatelessWidget {
                       const SizedBox(height: 16),
                       // nome estilizado
                       Text(
-                        character.name,
+                        widget.character.name,
                         style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
@@ -70,15 +75,15 @@ class CharacterDetailPage extends StatelessWidget {
                           Icon(
                             Icons.circle,
                             size: 12,
-                            color: character.status.toLowerCase() == "alive"
+                            color: widget.character.status.toLowerCase() == "alive"
                                 ? Colors.green
-                                : character.status.toLowerCase() == "dead"
+                                : widget.character.status.toLowerCase() == "dead"
                                 ? Colors.red
                                 : Colors.grey,
                           ),
                           const SizedBox(width: 6),
                           Text(
-                            character.status,
+                            widget.character.status,
                             style: const TextStyle(color: Colors.white70),
                           ),
                         ],
@@ -88,12 +93,12 @@ class CharacterDetailPage extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          InfoBox(title: "Specie", value: character.species),
-                          InfoBox(title: "ID", value: "#${character.id}"),
+                          simpleInformationBox(title: "Specie", value: widget.character.species),
+                          simpleInformationBox(title: "ID", value: "#${widget.character.id}"),
                         ],
                       ),
                       const SizedBox(height: 16),
-                      InfoBox(title: "Origin", value: "${character.origin}")
+                      simpleInformationBox(title: "Origin", value: "${widget.character.origin}")
                     ],
                   ),
                 ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class InfoBox extends StatelessWidget {
+class simpleInformationBox extends StatelessWidget {
   final String title;
   final String value;
 
-  const InfoBox({required this.title, required this.value});
+  const simpleInformationBox({required this.title, required this.value});
 
   @override
   Widget build(BuildContext context) {

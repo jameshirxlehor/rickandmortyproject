@@ -18,7 +18,7 @@ class _CharacterListPageState extends State<CharacterListPage> {
   List<Character> characters = [];
   int currentPage = 1;
   bool isLoading = false;
-  bool hasMore = true;
+  bool hasMoreCharacters = true;
 
   @override
   void initState() {
@@ -29,7 +29,7 @@ class _CharacterListPageState extends State<CharacterListPage> {
       if (_scrollController.position.pixels >=
           _scrollController.position.maxScrollExtent - 200 &&
           !isLoading &&
-          hasMore) {
+          hasMoreCharacters) {
         _fetchCharacters();
       }
     });
@@ -42,14 +42,23 @@ class _CharacterListPageState extends State<CharacterListPage> {
       characters.addAll(newCharacters);
       currentPage++;
       isLoading = false;
-      if (newCharacters.isEmpty) hasMore = false;
+      if (newCharacters.isEmpty) hasMoreCharacters = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Lista de Personagens",style: TextStyle(color: Colors.white),),backgroundColor: Colors.black,),
+      appBar: AppBar(
+        title: const Text(
+          "PERSONAGENS",
+          style: TextStyle(
+              color: Colors.white,
+          ),
+        ),
+        backgroundColor: Colors.black,
+        centerTitle: true,
+      ),
       backgroundColor: const Color(0xFF1C1C1C),
       body: Stack(
         children: [
@@ -101,7 +110,7 @@ class _CharacterListPageState extends State<CharacterListPage> {
                 return Padding(
                   padding: const EdgeInsets.all(16),
                   child: Center(
-                    child: hasMore
+                    child: hasMoreCharacters
                         ? const CircularProgressIndicator()
                         : const Text("Todos os personagens carregados"),
                   ),
