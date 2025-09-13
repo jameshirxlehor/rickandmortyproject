@@ -1,6 +1,6 @@
 # 🛸 Rick and Morty Flutter App
 
-Um aplicativo Flutter simples que consome a [Rick and Morty API](https://rickandmortyapi.com/) e exibe informações sobre personagens da série.  
+Um aplicativo simples que consome a [Rick and Morty API](https://rickandmortyapi.com/) e exibe informações sobre personagens da série.  
 Desenvolvido como desafio técnico, aplicando princípios de **Clean Architecture** e **Clean Code** para garantir organização, manutenibilidade e escalabilidade.
 
 ---
@@ -52,7 +52,7 @@ Essa decisão evita a adição de dependências desnecessárias e mantém o cód
 - #### Pré-requisitos
   - Flutter SDK (última versão estável)
   - Editor de código (ex: VS Code ou Android Studio)
-  - Emulador Android/iOS ou dispositivo físico conectado
+  - Emulador Android ou dispositivo físico conectado
 
 - #### Passos
   - 1º Execute o comando `git clone` no [Repositório do Projeto](https://github.com/jameshirxlehor/rickandmortyproject.git)
@@ -75,7 +75,7 @@ Essa decisão evita a adição de dependências desnecessárias e mantém o cód
   - 5º Execute no emulador ou dispositivo físico: `flutter run`
 
 ---
-## 📱 Demonstraçãor
+## 📱 Demonstração
 - [▶️ Clique aqui para assistir ao vídeo](https://youtube.com/shorts/u1WTMsoAbuc)
 - [📦 Baixar APK Release (Android)](https://drive.google.com/file/d/1YVh59Fi9HgR9WJylNWD0eUajWtKI-PSg/view?usp=sharing)
 
