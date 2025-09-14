@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rickandmortyproject/features/characters/domain/character.dart';
-import 'simple_information_box.dart';
+import 'package:rickandmortyproject/features/characters/data/character_model.dart';
+import 'package:rickandmortyproject/custom_widgets/simple_information_box.dart';
 
 class CharacterDetailPage extends StatefulWidget {
-  final Character character;
+  final CharacterModel character;
 
   const CharacterDetailPage({super.key, required this.character});
 

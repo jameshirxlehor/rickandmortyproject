@@ -1,5 +1,6 @@
-import 'character.dart';
+import 'package:rickandmortyproject/features/characters/domain/character_response.dart';
+
 
 abstract class CharacterRepository {
-  Future<List<Character>> getCharacters({int page = 1});
+  Future<CharacterResponse> getCharacters({int page = 1});
 }

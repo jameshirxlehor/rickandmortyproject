@@ -4,7 +4,6 @@ class Character{
   final String image;
   final String status;
   final String species;
-  final String origin;
 
   Character({
     required this.id,
@@ -12,6 +11,7 @@ class Character{
     required this.image,
     required this.status,
     required this.species,
-    required this.origin,
   });
+
+
 }

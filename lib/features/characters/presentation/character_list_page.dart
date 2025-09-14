@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:rickandmortyproject/features/characters/data/character_model.dart';
 import 'package:rickandmortyproject/features/characters/data/character_service.dart';
-import 'package:rickandmortyproject/features/characters/domain/character.dart';
 import 'package:rickandmortyproject/features/characters/presentation/character_detail_page.dart';
 
 class CharacterListPage extends StatefulWidget {
@@ -15,10 +15,11 @@ class _CharacterListPageState extends State<CharacterListPage> {
   final service = CharacterService(Dio());
   final ScrollController _scrollController = ScrollController();
 
-  List<Character> characters = [];
+  List<CharacterModel> characters = [];
   int currentPage = 1;
   bool isLoading = false;
   bool hasMoreCharacters = true;
+  num? totalPages;
 
   @override
   void initState() {
@@ -36,20 +37,26 @@ class _CharacterListPageState extends State<CharacterListPage> {
   }
 
   Future<void> _fetchCharacters() async {
+    if (!hasMoreCharacters) return;
     setState(() => isLoading = true);
     try {
-      final newCharacters = await service.getCharacters(page: currentPage);
-      ScaffoldMessenger.of(context).clearSnackBars();
+      final newResponseCharacterServiceGet = await service.getCharacters(page: currentPage);
+      final newCharacters = newResponseCharacterServiceGet.characters;
+
       setState(() {
         characters.addAll(newCharacters);
+        totalPages ??= newResponseCharacterServiceGet.totalPages;
         currentPage++;
-        if (newCharacters.isEmpty) hasMoreCharacters = false;
+        if (currentPage > totalPages!) {
+          hasMoreCharacters = false;
+        }
       });
+
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
          SnackBar(
-          content: Text("Sem conexão com a internet. Verifique sua rede."),
-          backgroundColor: Colors.deepPurpleAccent,
+          content: Text('Erro ao carregar personagens'),
+          backgroundColor: Colors.redAccent,
         ),
       );
     } finally {
@@ -130,7 +137,7 @@ class _CharacterListPageState extends State<CharacterListPage> {
                   child: Center(
                     child: hasMoreCharacters
                         ? const CircularProgressIndicator()
-                        : const Text("Todos os personagens carregados"),
+                        : const Text('Todos os personagens carregados!',style: TextStyle(color: Colors.white),),
                   ),
                 );
               }
