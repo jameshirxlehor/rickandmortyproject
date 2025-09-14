@@ -77,7 +77,7 @@ Essa decisão evita a adição de dependências desnecessárias e mantém o cód
 ---
 ## 📱 Demonstração
 - [▶️ Clique aqui para assistir ao vídeo](https://youtube.com/shorts/u1WTMsoAbuc)
-- [📦 Baixar APK Release (Android)](https://drive.google.com/file/d/1YVh59Fi9HgR9WJylNWD0eUajWtKI-PSg/view?usp=sharing)
+- [📦 Baixar APK Release (Android)](https://drive.google.com/file/d/1SVVuPByPW4fDOyle8EXXeQZbjiw7cUS-/view?usp=sharing)
 
 ---
 ## 👨‍💻 Autor
